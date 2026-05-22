@@ -20,7 +20,7 @@ export default function Hero() {
         </p>
 
         <a
-          href="https://wa.me/TONNUM"
+          href="https://api.whatsapp.com/send?phone=33649593561"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.btn}
