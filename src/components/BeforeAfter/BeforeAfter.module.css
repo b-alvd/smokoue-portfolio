@@ -1,0 +1,141 @@
+.section {
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 3rem;
+}
+
+.header {
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tag {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--red);
+  text-transform: uppercase;
+}
+.title {
+  font-family: var(--font-syne);
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  aspect-ratio: 16 / 9;
+  user-select: none;
+  background: var(--black-3);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  cursor: none;
+}
+
+.after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.before {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.after img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.beforeImg {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: var(--full-w, 100vw);
+  max-width: none;
+  object-fit: cover;
+}
+
+.dragZone {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  cursor: none;
+}
+
+.handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,0.7);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.handleBtn {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.label {
+  position: absolute;
+  bottom: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 5px 14px;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 12;
+}
+.labelLeft  { left: 14px; }
+.labelRight { right: 14px; }
+
+@media (max-width: 768px) {
+  .section { padding: 3rem 1.25rem; }
+  .grid { grid-template-columns: 1fr; }
+
+  .handleBtn {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .label {
+    font-size: 10px;
+    padding: 3px 10px;
+    bottom: 10px;
+  }
+}

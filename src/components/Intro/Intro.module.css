@@ -1,0 +1,53 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.panel {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 50%;
+  transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.panelLeft {
+  left: 0;
+  background: radial-gradient(ellipse 200% 100% at 100% 50%, #2a0505 0%, #0a0a0a 60%);
+}
+.panelRight {
+  right: 0;
+  background: radial-gradient(ellipse 200% 100% at 0% 50%, #2a0505 0%, #0a0a0a 60%);
+}
+
+.openLeft  { transform: translateX(-100%); }
+.openRight { transform: translateX(100%); }
+
+.avatar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+.avatarVisible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.avatarZoom {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(8);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.4, 0, 1, 1);
+}
