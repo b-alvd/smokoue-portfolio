@@ -1,5 +1,5 @@
 .section {
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   padding: 5rem 3rem;
 }
 
@@ -24,7 +24,9 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 100px;
+  max-width: 1350px;
+  margin: 0 auto;
 }
 
 .slider {
@@ -38,34 +40,15 @@
   cursor: none;
 }
 
-.after {
+/* Les deux images couvrent exactement le slider */
+.img {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.before {
-  position: absolute;
-  top: 0; left: 0; bottom: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.after img {
-  position: absolute;
-  inset: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.beforeImg {
-  position: absolute;
-  top: 0; left: 0;
-  height: 100%;
-  width: var(--full-w, 100vw);
-  max-width: none;
-  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
 }
 
 .dragZone {
@@ -89,10 +72,8 @@
 }
 
 .handleBtn {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
-  min-height: 42px;
+  width: 42px; height: 42px;
+  min-width: 42px; min-height: 42px;
   border-radius: 50%;
   background: var(--white);
   color: var(--black);
@@ -124,18 +105,7 @@
 
 @media (max-width: 768px) {
   .section { padding: 3rem 1.25rem; }
-  .grid { grid-template-columns: 1fr; }
-
-  .handleBtn {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    min-height: 32px;
-  }
-
-  .label {
-    font-size: 10px;
-    padding: 3px 10px;
-    bottom: 10px;
-  }
+  .grid { grid-template-columns: 1fr; max-width: 100%; }
+  .handleBtn { width: 32px; height: 32px; min-width: 32px; min-height: 32px; }
+  .label { font-size: 10px; padding: 3px 10px; bottom: 10px; }
 }

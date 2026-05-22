@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import styles from './BeforeAfter.module.css'
 
 const pairs = [
@@ -8,40 +8,21 @@ const pairs = [
 
 function Slider({ pair }) {
   const containerRef = useRef(null)
-  const clipRef      = useRef(null)
   const handleRef    = useRef(null)
-  const dragging     = useRef(false)
-
-  useEffect(() => {
-    const updateImgWidth = () => {
-      if (containerRef.current && clipRef.current) {
-        const w = containerRef.current.offsetWidth
-        clipRef.current.style.setProperty('--full-w', `${w}px`)
-      }
-    }
-    updateImgWidth()
-    window.addEventListener('resize', updateImgWidth)
-    return () => window.removeEventListener('resize', updateImgWidth)
-  }, [])
+  const [pos, setPos] = useState(50)
 
   const applyPos = (clientX) => {
     const rect = containerRef.current.getBoundingClientRect()
     const pct  = Math.min(Math.max((clientX - rect.left) / rect.width * 100, 0), 100)
-    clipRef.current.style.width  = `${pct}%`
+    setPos(pct)
     handleRef.current.style.left = `${pct}%`
   }
 
   const onStart = (e) => {
     e.preventDefault()
-    dragging.current = true
     applyPos(e.touches ? e.touches[0].clientX : e.clientX)
-
-    const onMove = (e) => {
-      if (!dragging.current) return
-      applyPos(e.touches ? e.touches[0].clientX : e.clientX)
-    }
+    const onMove = (e) => applyPos(e.touches ? e.touches[0].clientX : e.clientX)
     const onUp = () => {
-      dragging.current = false
       window.removeEventListener('mousemove', onMove)
       window.removeEventListener('mouseup', onUp)
       window.removeEventListener('touchmove', onMove)
@@ -56,20 +37,24 @@ function Slider({ pair }) {
   return (
     <div ref={containerRef} className={styles.slider}>
 
-      <div className={styles.after}>
-        <img src={pair.after} alt="Après" draggable={false} />
-      </div>
+      {/* APRÈS — fond complet */}
+      <img src={pair.after} alt="Après" draggable={false} className={styles.img} />
 
-      <div ref={clipRef} className={styles.before} style={{ width: '50%' }}>
-        <img src={pair.before} alt="Avant" draggable={false} className={styles.beforeImg} />
-      </div>
+      {/* AVANT — même image, clippée à droite via clipPath */}
+      <img
+        src={pair.before}
+        alt="Avant"
+        draggable={false}
+        className={styles.img}
+        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+      />
 
       <div className={styles.dragZone} onMouseDown={onStart} onTouchStart={onStart} />
 
       <span className={`${styles.label} ${styles.labelLeft}`}>AVANT</span>
       <span className={`${styles.label} ${styles.labelRight}`}>APRÈS</span>
 
-      <div ref={handleRef} className={styles.handle} style={{ left: '50%' }}>
+      <div ref={handleRef} className={styles.handle} style={{ left: `${pos}%` }}>
         <div className={styles.handleBtn}>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="6,3 2,9 6,15" />
