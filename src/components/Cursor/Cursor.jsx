@@ -35,33 +35,26 @@ export default function Cursor() {
       animId = requestAnimationFrame(animate)
     }
 
-    const onEnter = () => {
-      ringRef.current?.classList.add(styles.ringHover)
-      dotRef.current?.classList.add(styles.dotHover)
-    }
-    const onLeave = () => {
-      ringRef.current?.classList.remove(styles.ringHover)
-      dotRef.current?.classList.remove(styles.dotHover)
-    }
-
-    const bindLinks = () => {
-      document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', onEnter)
-        el.addEventListener('mouseleave', onLeave)
-      })
+    const onMouseOver = (e) => {
+      const target = e.target.closest('a, button')
+      
+      if (target) {
+        ringRef.current?.classList.add(styles.ringHover)
+        dotRef.current?.classList.add(styles.dotHover)
+      } else {
+        ringRef.current?.classList.remove(styles.ringHover)
+        dotRef.current?.classList.remove(styles.dotHover)
+      }
     }
 
     document.addEventListener('mousemove', onMove)
-    bindLinks()
+    document.addEventListener('mouseover', onMouseOver)
     animate()
-
-    const observer = new MutationObserver(bindLinks)
-    observer.observe(document.body, { childList: true, subtree: true })
 
     return () => {
       document.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseover', onMouseOver)
       cancelAnimationFrame(animId)
-      observer.disconnect()
     }
   }, [])
 
