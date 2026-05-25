@@ -8,13 +8,13 @@ const reviews = [
     sub: '62.1k abonnés',
     img: '/clients/13.jpg',
   },
-  // {
-  //   stars: 5,
-  //   text: "Smokoue a complètement transformé mes miniatures. Mon CTR est passé de 4% à 9%, puis mes viewers sont repartis aussitôt qu'ils ont vu la vidéo. Livraison rapide par contre, le naufrage n'a pas traîné.",
-  //   author: 'LeZorin',
-  //   sub: '33.1k abonnés',
-  //   img: '/clients/16.jpg',
-  // },
+  {
+    stars: 5,
+    text: "Je recommande à 100% , cela fait quelques temps maintenant que je travail avec Smokoue et je suis toujours satisfaite par ses miniatures, Trop trop chaud 🔥",
+    author: 'LeZorin',
+    sub: '33.1k abonnés',
+    img: '/clients/16.jpg',
+  },
   // {
   //   stars: 5,
   //   text: "Smokoue a complètement transformé mes miniatures. Depuis, mes vidéos ressemblent tellement à des pubs de dropshipping que même moi j'hésite à cliquer dessus. Service rapide, traumatisme durable.",
