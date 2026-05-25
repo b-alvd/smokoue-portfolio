@@ -15,13 +15,13 @@ const reviews = [
     sub: '33.1k abonnés',
     img: '/clients/16.jpg',
   },
-  // {
-  //   stars: 5,
-  //   text: "Smokoue a complètement transformé mes miniatures. Depuis, mes vidéos ressemblent tellement à des pubs de dropshipping que même moi j'hésite à cliquer dessus. Service rapide, traumatisme durable.",
-  //   author: 'LeZorin',
-  //   sub: '33.1k abonnés',
-  //   img: '/clients/16.jpg',
-  // },
+  {
+    stars: 5,
+    text: "Super expérience avec Smokoue, il comprend directement ce que je veux et les miniatures sont toujours incroyables !!!",
+    author: 'Zakino',
+    sub: '1.08M abonnés',
+    img: '/clients/4.jpg',
+  },
   // {
   //   stars: 5,
   //   text: "Mon CTR a explosé grâce à Smokoue. Les gens cliquent par curiosité médicale maintenant. Franchement impressionnant de réussir à rendre une chaîne YouTube aussi agressive visuellement en si peu de temps.",
