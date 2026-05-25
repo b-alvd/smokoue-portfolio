@@ -74,7 +74,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         <span>© {new Date().getFullYear()} Smokoue - Tous droits réservés.</span>
         <span className={styles.dev}>
-          Site développé par <a href="https://github.com/b-alvd" target="_blank" rel="noopener noreferrer">b_alvd</a>
+          Site développé par <a href="https://basilealeveque.fr" target="_blank" rel="noopener noreferrer">b_alvd</a>
         </span>
       </div>
     </footer>
